@@ -17,7 +17,7 @@
 
 * Add script tagg to your HTML file.
 ```HTML
-<script src="https://unpkg.com/kelbas"></script>
+<script src="https://ab-productions.github.io/kelbas"></script>
 ```
 
 * Start using the library
