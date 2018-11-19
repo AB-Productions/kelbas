@@ -53,9 +53,9 @@ class Parser {
 
   //Returns regular dom element, but requires element to have a wrapper node
   get container() {
-    let parser = new DOMParser()
-    let doc = parser.parseFromString(this.string, "text/html")
-    return this.place_values(doc.body.firstChild)
+    const div = document.createElement('div');
+    div.innerHTML = this.string;
+    return this.place_values(div.firstElementChild);
   }
 
   // Returns SVG element
