@@ -17,7 +17,7 @@
 
 * Add script tagg to your HTML file.
 ```HTML
-<script src="https://ab-productions.github.io/kelbas.min.js"></script>
+<script src="https://ab-productions.github.io/kelbas/kelbas.min.js"></script>
 ```
 
 * Start using the library
