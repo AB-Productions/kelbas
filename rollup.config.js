@@ -18,10 +18,30 @@ export default [{
   {
     input: "./index.js",
     plugins: [uglify()],
-    output: {
-      file: "build/kelbas.esm.js",
-      format: "es",
-      name: "kelbas"
-    }
+    output: [{
+        file: "build/kelbas.esm.js",
+        format: "es",
+        name: "kelbas"
+      },
+      {
+        file: "docs/kelbas.esm.js",
+        format: "es",
+        name: "kelbas"
+      }
+    ]
+  },
+  {
+    input: "./index.js",
+    output: [{
+        file: "docs/kelbas.js",
+        format: "umd",
+        name: "kelbas"
+      },
+      {
+        file: "build/kelbas.js",
+        format: "umd",
+        name: "kelbas"
+      }
+    ]
   }
 ]
