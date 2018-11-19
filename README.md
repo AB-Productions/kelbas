@@ -35,7 +35,7 @@ const click_event = () => {
   window.alert("Click event works!");
 }
 
-const list = HTML`<span onclick="${click_event}"><strong>Click me!</strong></span>
+const list = html`<span onclick="${click_event}"><strong>Click me!</strong></span>
                       <span>Element2</span>
                       <span>Element3</span>
                       <span>Element4</span>
@@ -53,8 +53,8 @@ const open_post = () => {
   window.alert("Open!");
 }
 
-const array = HTML`<div id="container">
-                      ${["post1", "post2", "post3"].map(item => HTML`<span onclick="${open_post}">${item}</span>`.container)}
+const array = html`<div id="container">
+                      ${["post1", "post2", "post3"].map(item => html`<span onclick="${open_post}">${item}</span>`.container)}
                    </div>`
 
 
@@ -65,7 +65,7 @@ document.body.appendChild(array.container);
 ##### Creating SVG-s also possible
 ```js
 
-const circle = HTML`<svg height="100" width="100">
+const circle = html`<svg height="100" width="100">
                       <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
                     </svg>`;
 

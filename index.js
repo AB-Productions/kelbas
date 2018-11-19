@@ -97,9 +97,9 @@ class Parser {
   }
 }
 
-function HTML(strings, ...values) {
+function html(strings, ...values) {
   return new Parser(strings, ...values)
 }
 
-window.HTML = HTML
-export default HTML
+window.html = html
+export default html
