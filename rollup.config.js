@@ -1,14 +1,19 @@
 import uglify from "rollup-plugin-uglify"
 
-export default [
-  {
+export default [{
     input: "./index.js",
     plugins: [uglify()],
-    output: {
-      file: "build/kelbas.min.js",
-      format: "umd",
-      name: "kelbas"
-    }
+    output: [{
+        file: "build/kelbas.min.js",
+        format: "umd",
+        name: "kelbas"
+      },
+      {
+        file: "docs/kelbas.min.js",
+        format: "umd",
+        name: "kelbas"
+      }
+    ]
   },
   {
     input: "./index.js",
