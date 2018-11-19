@@ -33,12 +33,12 @@ export default [{
   {
     input: "./index.js",
     output: [{
-        file: "docs/kelbas.full.js",
+        file: "docs/kelbas.js",
         format: "umd",
         name: "kelbas"
       },
       {
-        file: "build/kelbas.full.js",
+        file: "build/kelbas.js",
         format: "umd",
         name: "kelbas"
       }
