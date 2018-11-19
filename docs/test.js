@@ -26,8 +26,7 @@ const array = html `<div id="container">
 
 const array2 = html `<div id="container">
                         <h2>tere</h2>
-                      ${["data1", "data2", "data3"].map(item => html`<span onclick="${click_event}">${item}</span>`.container)}
-                   </div>`
+                      ${["data1", "data2", "data3"].map(item => html`<span onclick="${click_event}">${item}</span>`.container)} </div>`
 
 const selection = html `<select onchange="${select_function}">
                           <option value="1">Value 1</option>
