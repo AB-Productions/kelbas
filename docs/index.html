@@ -25,7 +25,7 @@
                                 <span class="example2">Element2</span>
                                 <span class="example3">Element3</span>`;
 
-                  document.body.appendChild(fragment.fragment);
+                  document.body.appendChild(fragment);
         </xmp>
       </code></pre>
     </text>
@@ -43,7 +43,7 @@
                                       <p>Text example</p>
                                    </section>`;
 
-            document.body.appendChild(container.container);
+            document.body.appendChild(container);
           </xmp>
       </code></pre>
     </text>
@@ -59,7 +59,7 @@
                                 <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
                               </svg>`;
 
-          document.body.appendChild(circle.svg);
+          document.body.appendChild(circle);
         </xmp>
       </code></pre>
     </text>
@@ -75,7 +75,7 @@
                                 ${["data1", "data2", "data3"].map(item => `<span>${item}</span>`).join("")}
                              </div>`
 
-          document.body.appendChild(array.container);
+          document.body.appendChild(array);
         </xmp>
       </code></pre>
     </text>
@@ -89,10 +89,10 @@
       <pre><code class="language-javascript">
         <xmp>
           const array2 = html`<div id="container">
-                                ${["data1", "data2", "data3"].map(item => html`<span onclick="${click_event}">${item}</span>`.container)}
+                                ${["data1", "data2", "data3"].map(item => html`<span onclick="${click_event}">${item}</span>`)}
                              </div>`
 
-          document.body.appendChild(array2.container);
+          document.body.appendChild(array2);
         </xmp>
       </code></pre>
     </text>
@@ -108,14 +108,14 @@
                                     <option value="1">Value 1</option>
                                     <option value="2">Value 2</option>
                                     <option value="3">Value 3</option>
-                                  </select>`.container
+                                  </select>`
 
           const selection_container = html`<container id="selection-container">'
                                               <h3 style="color:black">Select your options</h3>
                                               ${selection}
                                            '</container>`
 
-          document.body.appendChild(selection_container.container);
+          document.body.appendChild(selection_container);
         </xmp>
       </code></pre>
     </text>

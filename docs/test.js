@@ -26,27 +26,27 @@ const array = html `<div id="container">
 
 const array2 = html `<div id="container">
                         <h2>tere</h2>
-                      ${["data1", "data2", "data3"].map(item => html`<span onclick="${click_event}">${item}</span>`.container)} </div>`
+                      ${["data1", "data2", "data3"].map(item => html`<span onclick="${click_event}">${item}</span>`)} </div>`
 
 const selection = html `<select onchange="${select_function}">
                           <option value="1">Value 1</option>
                           <option value="2">Value 2</option>
                           <option value="3">Value 3</option>
-                        </select>`.container
+                        </select>`
 
 const selection_container = html `<container id="selection-container">'
                                     <h3 style="color:black">Select your options</h3>
                                     ${selection}
                                  '</container>`
 
-document.body.querySelector("#first-example element").appendChild(fragment.fragment)
+document.body.querySelector("#first-example element").appendChild(fragment)
 
-document.body.querySelector("#second-example element").appendChild(container.container)
+document.body.querySelector("#second-example element").appendChild(container)
 
-document.body.querySelector("#third-example element").appendChild(circle.svg)
+document.body.querySelector("#third-example element").appendChild(circle)
 
-document.body.querySelector("#fourth-example element").appendChild(array.container)
+document.body.querySelector("#fourth-example element").appendChild(array)
 
-document.body.querySelector("#fifth-example element").appendChild(array2.container)
+document.body.querySelector("#fifth-example element").appendChild(array2)
 
-document.body.querySelector("#sixth-example element").appendChild(selection_container.container)
+document.body.querySelector("#sixth-example element").appendChild(selection_container)

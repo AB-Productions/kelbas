@@ -44,30 +44,14 @@ class Parser {
       .reduce((prev, current) => prev + current)
   }
 
-  //Returns document fragment element, doesent require wrapper
+  // Returns regular dom element
   get fragment() {
-    const template = document.createElement("template")
-    template.innerHTML = this.string
-    return this.place_values(template.content.cloneNode(true))
-  }
-
-  //Returns regular dom element, but requires element to have a wrapper node
-  get container() {
     const div = document.createElement('div');
     div.innerHTML = this.string;
     return this.place_values(div.firstElementChild);
   }
 
-  // Returns SVG element
-  get svg() {
-    let parser = new DOMParser()
-    const container = this.container
-    container.setAttribute("xmlns", "http://www.w3.org/2000/svg")
-    let doc = parser.parseFromString(container.outerHTML, "image/svg+xml")
-    return this.place_values(doc.documentElement)
-  }
-
-  //Adds event listeners and appends dom elements if neccesary
+  // Adds event listeners and appends dom elements if neccesary
   place_values(container) {
     this.values_map.forEach(entry => {
       // Get the container of the value, we need to make a difference between document.fragment element and regular dom node,
@@ -98,7 +82,7 @@ class Parser {
 }
 
 function html(strings, ...values) {
-  return new Parser(strings, ...values)
+  return new Parser(strings, ...values).fragment;
 }
 
 window.html = html
