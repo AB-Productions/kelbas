@@ -12,7 +12,7 @@ class Parser {
     this.string = this.concat_string(strings, values)
   }
 
-  //Makes a big string from template literals strings and values, also adds ID-s and pushes {id, value} object to values_map,
+  // Makes a big string from template literals strings and values, also adds ID-s and pushes {id, value} object to values_map,
   // so we can put values to correct places in dom element.
   concat_string(strings, values) {
     return strings
@@ -21,15 +21,16 @@ class Parser {
         const id = UUID()
         switch (true) {
           case typeof value === "function":
-            string = string.concat(`"${id} `)
+            // the string part that replaces the ${} inside an element: <div onclick=${myFunc}> => becomes => <div onclick=" `" data-${id}="` ">
+            string = string.concat(`" data-${id}="`)
             this.values_map.push({
               id,
               value
             })
             break
           case typeof value === "object" || (value && value.nodeType === 1):
-            //Add placeholder for the list item
-            string = `${string} <template ${id}></template>`
+            // Add placeholder for the list item
+            string = `${string} <template data-${id}=""></template>`
             this.values_map.push({
               id,
               value
@@ -54,28 +55,33 @@ class Parser {
   // Adds event listeners and appends dom elements if neccesary
   place_values(container) {
     this.values_map.forEach(entry => {
-      // Get the container of the value, we need to make a difference between document.fragment element and regular dom node,
-      // if container has no outherHTML that means it`s a fragment.
-      const element = container.outerHTML ? container.parentNode.querySelector(`[${entry.id}]`) : container.querySelector(`[${entry.id}]`)
-      if (!element) throw new Error('Warning function must be defined between parentheses for example "${calledFunction}"')
+
+      let element = container.querySelector(`[data-${entry.id}]`) || container.closest(`[data-${entry.id}]`);
+      if (!element) throw new Error(`Warning: could not match event listener --- could not find element with id ${entry.id} --- Function must be defined between parentheses for example "\${calledFunction}"`);
+
       if (typeof entry.value == "function") {
         // Find onclick, onmouseover .. etc strings values so we can add event listeners to them.
-        const event_type = /(on)\w+/g.exec(element.outerHTML)[0].split("on")[1]
+        const event_type = /(on)\w+/g.exec(element.outerHTML)[0].split("on")[1];
         // Add the event listener to the element
-        element.addEventListener(event_type, entry.value.bind(this))
+        element.addEventListener(event_type, entry.value.bind(this));
         // Remove the on- event, required if we have multiple events on same element
-        element.removeAttribute(`on${event_type}`)
+        element.removeAttribute(`on${event_type}`);
+        element.removeAttribute(`data-${entry.id}`);
+
       } else if (typeof entry.value == "object") {
         // Swap template placeholder with list object
         if (!entry.value.children) {
-          const fragment = document.createDocumentFragment()
-          entry.value.forEach(child => fragment.appendChild(child))
-          element.replaceWith(fragment)
+          const fragment = document.createDocumentFragment();
+          entry.value.forEach(child => fragment.appendChild(child));
+          element.replaceWith(fragment);
+
         } else {
-          element.replaceWith(entry.value)
+          element.replaceWith(entry.value);
         }
+
       }
     })
+
     // returns the container back with values added.
     return container
   }
