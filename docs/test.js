@@ -6,9 +6,13 @@ const select_function = (event) => {
   window.alert(event.target.value)
 }
 
-const fragment = html `<span class="example1" onclick="${click_event}"><strong>Click me!</strong></span>
-                      <span class="example2">Element2</span>
-                      <span class="example3">Element3</span>`
+const fragment = html `
+<data-fragment>
+  <span class="example1" onclick="${click_event}"><strong>Click me!</strong></span>
+  <span class="example2">Element2</span>
+  <span class="example3">Element3</span>
+</data-fragment>
+`
 
 const container = html `<section onclick="${click_event}" id="container">
                           <span>element1</span>

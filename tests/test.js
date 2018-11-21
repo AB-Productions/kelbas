@@ -3,13 +3,14 @@ const html = require("../build/kelbas.min.js")
 
 test("Should create container", t => {
   const element = html `<div id="container"></div>`
+  // t.equal(element, "container")
   t.equal(element.getAttribute("id"), "container")
   t.pass("Container created correctly")
   t.end()
 })
 
 test("Should create fragment", t => {
-  const element = html `<div></div><div></div><div></div><div></div>`
+  const element = html `<data-fragment><div></div><div></div><div></div><div></div></data-fragment>`
   t.equal(element.children.length, 4)
   t.pass("Fragment created with 4 children")
   t.end()

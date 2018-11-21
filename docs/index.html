@@ -16,22 +16,6 @@
     <h1>Kelbas documentation</h1>
     <hr>
   </description>
-  <example id="first-example">
-    <text>
-      <p>Create a <strong>document fragment</strong> <br><span> Document fragments are elements without a real container <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment">Document Fragment</a></span></p>
-      <pre><code class="language-javascript">
-        <xmp>
-          const fragment = html`<span class="example1" onclick="${click_event}"><strong>Click me!</strong></span>
-                                <span class="example2">Element2</span>
-                                <span class="example3">Element3</span>`;
-
-                  document.body.appendChild(fragment);
-        </xmp>
-      </code></pre>
-    </text>
-    <element></element>
-  </example>
-
   <example id="second-example">
     <text>
       <p>Create a <strong>document container</strong> <br> <span>Container is a dom element what has wrapper and then children inside, useful because fragments dont have all dom manipulation possibilities</span></p>
@@ -116,6 +100,27 @@
                                            '</container>`
 
           document.body.appendChild(selection_container);
+        </xmp>
+      </code></pre>
+    </text>
+    <element></element>
+  </example>
+
+  <example id="first-example">
+    <text>
+      <p>Usually you’ll have to provide an outer container that wraps your element. But if you wish to create elements without outer container, you can create a <strong>document fragment</strong> <br>
+      <span> Document fragments are elements without a real container <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment">Document Fragment</a></span><br>
+      the tag &lt;data-fragment&rt; is only used to differenciate fragments and will not be rendered</p>
+      <pre><code class="language-javascript">
+        <xmp>
+          const fragment = html`
+          <data-fragment>
+            <span class="example1" onclick="${click_event}"><strong>Click me!</strong></span>
+            <span class="example2">Element2</span>
+            <span class="example3">Element3</span>
+          </data-fragment>`;
+
+          document.body.appendChild(fragment);
         </xmp>
       </code></pre>
     </text>
